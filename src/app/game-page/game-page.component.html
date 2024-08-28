@@ -1,0 +1,17 @@
+<div class="flex flex-col items-center justify-center min-h-screen bg-gray-100">
+    <h1 class="text-3xl font-bold mb-4">Chess Board</h1>
+    <div class="grid grid-cols-8 gap-0 border border-gray-800">
+        <ng-container *ngFor="let row of chessCordination; let i = index">
+            <div *ngFor="let piece of row; let j = index"
+                class="w-16 h-16 flex items-center justify-center text-2xl font-bold cursor-pointer" [ngClass]="{
+                 'bg-amber-200': (i + j) % 2 === 0,
+                 'bg-amber-800': (i + j) % 2 !== 0,
+                 'text-white': piece < 0,
+                 'text-black': piece > 0
+               }" (click)="pressedPiece(i, j)">
+                <img class="w-8 sm:w-10 md:w-12 lg:w-15 xl:w-15 "
+                    [src]="'assets/pieces/'+getPieceSymbol(piece.toString())" alt="" srcset="">
+            </div>
+        </ng-container>
+    </div>
+</div>
